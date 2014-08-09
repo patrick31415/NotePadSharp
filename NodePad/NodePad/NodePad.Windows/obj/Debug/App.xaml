@@ -8,12 +8,8 @@
 		<Style x:Key="MainThemeStyle" TargetType="Grid">
 			<Setter Property="Background" Value="Green"></Setter>
 		</Style>
-		<Style x:Key="TitleStyle" BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
-			<Setter Property="FontSize" Value="26.667"/>
-			<Setter Property="FontWeight" Value="Light"/>
-			<Setter Property="LineHeight" Value="30"/>
-		</Style>
 
 	</Application.Resources>
 
 </Application>
+

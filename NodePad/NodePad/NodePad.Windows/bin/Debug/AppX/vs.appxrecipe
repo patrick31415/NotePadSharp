@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>PATRICK-PC</Machine>
+    <WindowsUser>Patrick</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>200c93fe-b1ce-4f5b-8f85-acc79f5bba46</PackageIdentityName>
+    <IntermediateOutputPath>D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>B6B2FA133CEBD6855CEF7A5B80865896884FAB53E54AE1B2946D328CC3AA3459</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>200c93fe-b1ce-4f5b-8f85-acc79f5bba46_1.0.0.0_neutral__t66pgecwyvnzw</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>200c93fe-b1ce-4f5b-8f85-acc79f5bba46_t66pgecwyvnzw!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>200c93fe-b1ce-4f5b-8f85-acc79f5bba46</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Patrick</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-08-08T17:05:29.806</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\NodePad.Windows.exe">
+      <PackagePath>NodePad.Windows.exe</PackagePath>
+      <Modified>2014-08-08T17:17:59.737</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-03-14T02:55:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-03-14T02:55:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-03-14T02:55:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-03-14T02:55:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2014-08-08T17:17:59.118</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\FileListPage.xbf">
+      <PackagePath>FileListPage.xbf</PackagePath>
+      <Modified>2014-08-08T17:17:59.134</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\ItemEditPage.xbf">
+      <PackagePath>ItemEditPage.xbf</PackagePath>
+      <Modified>2014-08-08T17:17:59.172</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\NodePad.Windows.xr.xml">
+      <PackagePath>NodePad.Windows.xr.xml</PackagePath>
+      <Modified>2014-08-08T17:17:58.941</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2014-08-08T17:05:29.579</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

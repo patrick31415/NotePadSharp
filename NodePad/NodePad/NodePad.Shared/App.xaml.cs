@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -95,7 +96,7 @@ namespace NodePad
                 // 当未还原导航堆栈时，导航到第一页，
                 // 并通过将所需信息作为导航参数传入来配置
                 // 参数
-                if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+				if (!rootFrame.Navigate(typeof(ItemEditPage), e.Arguments))
                 {
                     throw new Exception("Failed to create initial page");
                 }
@@ -133,5 +134,19 @@ namespace NodePad
             // TODO: 保存应用程序状态并停止任何后台活动
             deferral.Complete();
         }
+
+		protected override void OnFileActivated(FileActivatedEventArgs args) {
+			foreach (var obj in args.Files) {
+				if (obj != null) {
+					Frame rootFrame = new Frame();
+					if (!rootFrame.Navigate(typeof(ItemEditPage), obj)) {
+
+					}
+					break;
+				}
+			}
+
+			base.OnFileActivated(args);
+		}
     }
 }

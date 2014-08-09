@@ -1,0 +1,1 @@
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\NodePad.Windows.csproj;neutral
