@@ -22,11 +22,11 @@ namespace NodePad {
 	/// <summary>
 	/// 可独立使用或用于导航至 Frame 内部的空白页。
 	/// </summary>
-	public sealed partial class FileListPage : Page {
+	public sealed partial class ItemEditPage : Page {
 		private NavigationHelper navigationHelper;
 		private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-		public FileListPage() {
+		public ItemEditPage() {
 			this.InitializeComponent();
 
 			this.navigationHelper = new NavigationHelper(this);

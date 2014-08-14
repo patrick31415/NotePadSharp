@@ -1,5 +1,4 @@
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\App.xbf
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\FileListPage.xbf
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\NodePad.Windows.xr.xml
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\NodePad.Windows.exe
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\NodePad.Windows.pdb
@@ -8,13 +7,9 @@ D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\AppxM
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\NodePad.Windows.build.appxrecipe
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\App.g.i.cs
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\App.g.cs
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\FileListPage.g.i.cs
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\FileListPage.g.cs
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\XamlTypeInfo.g.cs
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\App.xaml
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\FileListPage.xaml
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\App.xbf
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\FileListPage.xbf
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\XamlSaveStateFile.xml
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\NodePad.Windows.exe
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\NodePad.Windows.pdb

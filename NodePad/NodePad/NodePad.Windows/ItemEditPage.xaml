@@ -8,101 +8,125 @@
     xmlns:common="using:NodePad.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" SizeChanged="pageRoot_SizeChanged">
 
-    <!--
-        此网格用作定义以下两行的页的根面板: 
-        * 第 0 行包含后退按钮和页标题
-        * 第 1 行包含页布局的其余部分
+	<Page.Resources>
+		<!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+		<x:String x:Key="FileName">Untitled</x:String>
+
+		<CollectionViewSource x:Name="ItemViewSource" Source="{Binding Items}" />
+	</Page.Resources>
+
+	<!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
     -->
-	<Grid Style="{StaticResource MainThemeStyle}">
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
+	<Grid Background="{StaticResource MainThemeBrush}">
+		<Grid.ChildrenTransitions>
+			<TransitionCollection>
+				<EntranceThemeTransition/>
+			</TransitionCollection>
+		</Grid.ChildrenTransitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="140"/>
+			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition x:Name="primaryColumn" Width="420"/>
-			<ColumnDefinition x:Name="secondaryColumn" Width="*"/>
+			<ColumnDefinition x:Name="primaryColumn" Width="420*" />
+			<ColumnDefinition x:Name="secondColumn" Width="946*" />
 		</Grid.ColumnDefinitions>
 
-		<!--
-            TODO: 应将内容放入以下网格
-                  以显示当前项的详细信息
-        -->
-        <Grid Grid.Row="1" x:Name="contentRegion"/>
-
-        <!-- 后退按钮和页标题-->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+		<!-- Back button and page title -->
+		<Grid x:Name="gTitle" Margin="0,0,0,0" Grid.ColumnSpan="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition x:Name="TitlePrimaryColumn" Width="120*" />
+				<ColumnDefinition Width="1200*" />
+			</Grid.ColumnDefinitions>
+			<Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         VerticalAlignment="Top"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
-        </Grid>
-	    
-	    <!-- 选定项的详细信息-->
-		<ScrollViewer
-            x:Name="itemDetail"
-            AutomationProperties.AutomationId="ItemDetailScrollViewer"
-            Grid.Column="1"
-            Grid.RowSpan="2"
-            Padding="60,0,66,0"
-            DataContext="{Binding SelectedItem, ElementName=itemListView}"
-            HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
-            ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Enabled"
-            ScrollViewer.ZoomMode="Disabled">
+			<TextBlock x:Name="pageTitle" Text="{StaticResource FileName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,0,40" HorizontalAlignment="Left" Width="295"/>
+		</Grid>
+		<ListBox x:Name="lstInfo" Margin="50,2,0,50" Grid.Row="1" HorizontalAlignment="Left" Width="370" ItemsSource="{Binding Source={StaticResource ItemViewSource}}" >
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="50*" />
+								<ColumnDefinition Width="50*" />
+							</Grid.ColumnDefinitions>
+							<TextBlock Text="{Binding Title}" Grid.Column="0" />
+							<StackPanel Grid.Column="1">
+								<TextBlock Text="{Binding Subtitle}" HorizontalAlignment="Right" />
+							</StackPanel>
+						</Grid>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
 
-			<Grid x:Name="itemDetailGrid" Margin="0,60,0,50">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+		<ScrollViewer Grid.Column="1" Grid.Row="1" Margin="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" >
+			<Grid x:Name="gContainer" Margin="25,0,25,50">
+				<TextBox x:Name="tbxContent" FontFamily="Microsoft Yahei" FontSize="20" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+			</Grid>
+		</ScrollViewer>
 
-                <!--<Image Grid.Row="1" Margin="0,0,20,0" Width="180" Height="180" Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>-->
-                <StackPanel x:Name="itemDetailTitlePanel" Grid.Row="1" Grid.Column="1">
-					<TextBlock x:Name="itemTitle" Margin="0,-10,0,35" Text="{Binding Title}" Style="{StaticResource TitleStyle}"/>
-				</StackPanel>
-                <TextBox Grid.Row="2" Grid.ColumnSpan="2" Margin="0,20,0,0" Text="{Binding Content}" FontFamily="Microsoft YaHei" FontSize="16" AcceptsReturn="True" IsReadOnly="False" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" />
-            </Grid>
-        </ScrollViewer>
-	    
-    </Grid>
-	
-	
+		<StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Margin="25"/>
+
+		<VisualStateManager.VisualStateGroups>
+			<VisualStateGroup>
+				<VisualState x:Name="Normal" />
+				<VisualState x:Name="State420">
+					<Storyboard>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="lstInfo" Storyboard.TargetProperty="Visibility">
+							<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="primaryColumn" Storyboard.TargetProperty="Width" >
+							<DiscreteObjectKeyFrame KeyTime="0" Value="0" />
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="gContainer" Storyboard.TargetProperty="Margin">
+							<DiscreteObjectKeyFrame KeyTime="0" Value="0,0,0,0" />
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Visibility">
+							<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="TitlePrimaryColumn" Storyboard.TargetProperty="Width">
+							<DiscreteObjectKeyFrame KeyTime="0" Value="20" />
+						</ObjectAnimationUsingKeyFrames>
+					</Storyboard>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
+	</Grid>
+
 	<Page.BottomAppBar>
 		<AppBar>
 			<Grid>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="400" />
-					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="70*" />
+					<ColumnDefinition Width="30*" />
 				</Grid.ColumnDefinitions>
-				<StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal" Canvas.ZIndex="2"  >
-					<AppBarButton x:Uid="New" Icon="Add" Label="New" Click="AppBarButton_Click_New" />
-					<AppBarButton x:Uid="Save" Icon="Save" Label="Save" Click="AppBarButton_Click_Save" />
-					<AppBarButton x:Uid="SaveAs" Icon="SaveLocal" Label="SaveAs" Click="AppBarButton_Click_SaveAs" />
-					<AppBarButton x:Uid="Open" Icon="OpenFile" Label="Open" Click="AppBarButton_Click_Open" />
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="0">
+					<AppBarButton x:Name="btnNew" Icon="NewFolder" Label="New" />
+					<AppBarButton x:Name="btnSave" Icon="Save" Label="Save" />
+					<AppBarButton x:Name="btnSaveAs" Icon="SaveLocal" Label="Save As" />
 				</StackPanel>
-				<StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" >
-					<AppBarButton x:Uid="Remove" Icon="Remove" Label="Remove" Click="AppBarButton_Click_Remove" />
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+					<AppBarButton x:Name="btnOpen" Icon="OpenFile" Label="Open" />
 				</StackPanel>
 			</Grid>
 		</AppBar>
 	</Page.BottomAppBar>
+
+	<Page.TopAppBar>
+		<AppBar x:Name="topSwitchBar">
+			<ListBox x:Name="lstFileList" Margin="2" />
+		</AppBar>
+	</Page.TopAppBar>
 </Page>

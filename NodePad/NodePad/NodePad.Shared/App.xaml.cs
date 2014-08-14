@@ -19,65 +19,57 @@ using Windows.UI.Xaml.Navigation;
 
 // 有关“空白应用程序”模板的信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=234227
 
-namespace NodePad
-{
-    /// <summary>
-    /// 提供特定于应用程序的行为，以补充默认的应用程序类。
-    /// </summary>
-    public sealed partial class App : Application
-    {
+namespace NodePad {
+	/// <summary>
+	/// 提供特定于应用程序的行为，以补充默认的应用程序类。
+	/// </summary>
+	public sealed partial class App : Application {
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
 #endif
 
-        /// <summary>
-        /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行，
-        /// 逻辑上等同于 main() 或 WinMain()。
-        /// </summary>
-        public App()
-        {
-            this.InitializeComponent();
-            this.Suspending += this.OnSuspending;
-        }
+		/// <summary>
+		/// 初始化单一实例应用程序对象。这是执行的创作代码的第一行，
+		/// 逻辑上等同于 main() 或 WinMain()。
+		/// </summary>
+		public App() {
+			this.InitializeComponent();
+			this.Suspending += this.OnSuspending;
+		}
 
-        /// <summary>
-        /// 在应用程序由最终用户正常启动时进行调用。
-        /// 当启动应用程序以打开特定的文件或显示搜索结果等操作时，
-        /// 将使用其他入口点。
-        /// </summary>
-        /// <param name="e">有关启动请求和过程的详细信息。</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
-        {
+		/// <summary>
+		/// 在应用程序由最终用户正常启动时进行调用。
+		/// 当启动应用程序以打开特定的文件或显示搜索结果等操作时，
+		/// 将使用其他入口点。
+		/// </summary>
+		/// <param name="e">有关启动请求和过程的详细信息。</param>
+		protected override void OnLaunched(LaunchActivatedEventArgs e) {
 #if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
+			if (System.Diagnostics.Debugger.IsAttached) {
+				this.DebugSettings.EnableFrameRateCounter = true;
+			}
 #endif
 
-            Frame rootFrame = Window.Current.Content as Frame;
+			Frame rootFrame = Window.Current.Content as Frame;
 
-            // 不要在窗口已包含内容时重复应用程序初始化，
-            // 只需确保窗口处于活动状态
-            if (rootFrame == null)
-            {
-                // 创建要充当导航上下文的框架，并导航到第一页
-                rootFrame = new Frame();
+			// 不要在窗口已包含内容时重复应用程序初始化，
+			// 只需确保窗口处于活动状态
+			if (rootFrame == null) {
+				// 创建要充当导航上下文的框架，并导航到第一页
+				rootFrame = new Frame();
 
-                // TODO: 将此值更改为适合您的应用程序的缓存大小
-                rootFrame.CacheSize = 1;
+				// TODO: 将此值更改为适合您的应用程序的缓存大小
+				rootFrame.CacheSize = 1;
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    // TODO: 从之前挂起的应用程序加载状态
-                }
+				if (e.PreviousExecutionState == ApplicationExecutionState.Terminated) {
+					// TODO: 从之前挂起的应用程序加载状态
+				}
 
-                // 将框架放在当前窗口中
-                Window.Current.Content = rootFrame;
-            }
+				// 将框架放在当前窗口中
+				Window.Current.Content = rootFrame;
+			}
 
-            if (rootFrame.Content == null)
-            {
+			if (rootFrame.Content == null) {
 #if WINDOWS_PHONE_APP
                 // 删除用于启动的旋转门导航。
                 if (rootFrame.ContentTransitions != null)
@@ -93,18 +85,17 @@ namespace NodePad
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
 #endif
 
-                // 当未还原导航堆栈时，导航到第一页，
-                // 并通过将所需信息作为导航参数传入来配置
-                // 参数
-				if (!rootFrame.Navigate(typeof(ItemEditPage), e.Arguments))
-                {
-                    throw new Exception("Failed to create initial page");
-                }
-            }
+				// 当未还原导航堆栈时，导航到第一页，
+				// 并通过将所需信息作为导航参数传入来配置
+				// 参数
+				if (!rootFrame.Navigate(typeof(ItemEditPage), e.Arguments)) {
+					throw new Exception("Failed to create initial page");
+				}
+			}
 
-            // 确保当前窗口处于活动状态
-            Window.Current.Activate();
-        }
+			// 确保当前窗口处于活动状态
+			Window.Current.Activate();
+		}
 
 #if WINDOWS_PHONE_APP
         /// <summary>
@@ -120,33 +111,35 @@ namespace NodePad
         }
 #endif
 
-        /// <summary>
-        /// 在将要挂起应用程序执行时调用。    将保存应用程序状态
-        /// 将被终止还是恢复的情况下保存应用程序状态，
-        /// 并让内存内容保持不变。
-        /// </summary>
-        /// <param name="sender">挂起的请求的源。</param>
-        /// <param name="e">有关挂起的请求的详细信息。</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
-        {
-            var deferral = e.SuspendingOperation.GetDeferral();
+		/// <summary>
+		/// 在将要挂起应用程序执行时调用。    将保存应用程序状态
+		/// 将被终止还是恢复的情况下保存应用程序状态，
+		/// 并让内存内容保持不变。
+		/// </summary>
+		/// <param name="sender">挂起的请求的源。</param>
+		/// <param name="e">有关挂起的请求的详细信息。</param>
+		private void OnSuspending(object sender, SuspendingEventArgs e) {
+			var deferral = e.SuspendingOperation.GetDeferral();
 
-            // TODO: 保存应用程序状态并停止任何后台活动
-            deferral.Complete();
-        }
+			// TODO: 保存应用程序状态并停止任何后台活动
+			deferral.Complete();
+		}
 
 		protected override void OnFileActivated(FileActivatedEventArgs args) {
-			foreach (var obj in args.Files) {
-				if (obj != null) {
-					Frame rootFrame = new Frame();
-					if (!rootFrame.Navigate(typeof(ItemEditPage), obj)) {
+			StorageFile obj = args.Files[0] as StorageFile;
 
-					}
-					break;
-				}
+			Frame rootPage = Window.Current.Content as Frame;
+			if (rootPage == null) 
+				rootPage = new Frame();
+			Window.Current.Content = rootPage;
+
+			if (!rootPage.Navigate(typeof(ItemEditPage), obj)) {
+				throw new Exception("文件打开失败");
 			}
+			//ItemEditPage.SetPara(obj);
 
-			base.OnFileActivated(args);
+			//base.OnFileActivated(args);
+			Window.Current.Activate();
 		}
-    }
+	}
 }

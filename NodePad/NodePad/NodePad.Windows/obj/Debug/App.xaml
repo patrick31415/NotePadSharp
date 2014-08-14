@@ -5,9 +5,7 @@
     xmlns:local="using:NodePad">
 	<Application.Resources>
 
-		<Style x:Key="MainThemeStyle" TargetType="Grid">
-			<Setter Property="Background" Value="Green"></Setter>
-		</Style>
+		<SolidColorBrush x:Key="MainThemeBrush" Color="#FF10C1FF"/>
 
 	</Application.Resources>
 

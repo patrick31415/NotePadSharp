@@ -1,5 +1,4 @@
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\bin\Debug\App.xbf
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\bin\Debug\MainPage.xbf
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\bin\Debug\NodePad.WindowsPhone.xr.xml
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\bin\Debug\NodePad.WindowsPhone.exe
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\bin\Debug\NodePad.WindowsPhone.pdb
@@ -8,13 +7,9 @@ D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\bin\Debug\
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\bin\Debug\NodePad.WindowsPhone.build.appxrecipe
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\App.g.i.cs
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\App.g.cs
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\MainPage.g.i.cs
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\MainPage.g.cs
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\XamlTypeInfo.g.cs
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\App.xaml
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\MainPage.xaml
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\App.xbf
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\MainPage.xbf
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\XamlSaveStateFile.xml
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\NodePad.WindowsPhone.exe
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\NodePad.WindowsPhone.pdb
@@ -30,8 +25,8 @@ D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\qualifiers.txt.intermediate
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\ProjectArchitectures.txt
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\bin\Debug\FileListPage.xbf
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\FileListPage.g.i.cs
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\FileListPage.g.cs
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\FileListPage.xaml
-D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\FileListPage.xbf
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\bin\Debug\ItemEditPage.xbf
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\ItemEditPage.g.i.cs
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\ItemEditPage.g.cs
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\ItemEditPage.xaml
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.WindowsPhone\obj\Debug\ItemEditPage.xbf
