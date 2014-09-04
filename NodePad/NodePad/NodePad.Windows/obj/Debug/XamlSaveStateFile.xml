@@ -1,6 +1,6 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <LocalAssembly PathName="d:\documents\github\notepadsharp\nodepad\nodepad\nodepad.windows\obj\debug\intermediatexaml\nodepad.windows.exe" HashGuid="7ec26142-2dab-0ccb-6d32-8dcd5c3dac9b" />
+    <LocalAssembly PathName="d:\documents\github\notepadsharp\nodepad\nodepad\nodepad.windows\obj\debug\intermediatexaml\nodepad.windows.exe" HashGuid="a6b44b84-52b6-ebb4-5d0e-aade70242fb1" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windows\v8.1\extensionsdks\msadvertisingxaml\8.1\references\commonconfiguration\neutral\microsoft.advertising.winrt.ui.winmd" HashGuid="e2e1868b-6ac9-03b1-ca83-3c4740a6cdfb" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windows\v8.1\extensionsdks\msadvertisingxaml\8.1\references\commonconfiguration\neutral\microsoftadvertising.winmd" HashGuid="ff7acc79-1a32-fd80-27f3-998d24e2b25e" />
   </ReferenceAssemblyList>

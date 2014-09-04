@@ -154,6 +154,7 @@
     <Content Include="Assets\Square70x70Logo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="UserSetting.txt" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="MSAdvertisingXaml, Version=8.1">

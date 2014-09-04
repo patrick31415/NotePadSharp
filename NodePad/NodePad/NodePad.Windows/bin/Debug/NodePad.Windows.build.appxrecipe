@@ -68,6 +68,9 @@
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\UserSetting.txt">
+      <PackagePath>UserSetting.txt</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>

@@ -8,7 +8,7 @@
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>200c93fe-b1ce-4f5b-8f85-acc79f5bba46</PackageIdentityName>
     <IntermediateOutputPath>D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>66444F86435008B7AED1D1028A4C9C597FC6F053DA9A835929EAEAC28E2E1184</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>2F5EC19FA48363AC4F12025398EC4E207C7C798362A88AADBFE82B0CB7D94A9C</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>200c93fe-b1ce-4f5b-8f85-acc79f5bba46_0.0.0.2_neutral__t66pgecwyvnzw</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>200c93fe-b1ce-4f5b-8f85-acc79f5bba46_t66pgecwyvnzw!App</RegisteredUserModeAppID>
     <RegisteredPackageID>200c93fe-b1ce-4f5b-8f85-acc79f5bba46</RegisteredPackageID>
@@ -20,13 +20,13 @@
     <AppXManifest Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-08-19T12:45:21.643</Modified>
+      <Modified>2014-09-04T08:20:03.772</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\NodePad.Windows.exe">
       <PackagePath>NodePad.Windows.exe</PackagePath>
-      <Modified>2014-09-04T05:34:20.886</Modified>
+      <Modified>2014-09-04T08:22:42.308</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\MSAdvertisingXaml\8.1\References\CommonConfiguration\neutral\Microsoft.Advertising.WinRT.UI.winmd">
       <PackagePath>Microsoft.Advertising.WinRT.UI.winmd</PackagePath>
@@ -91,6 +91,10 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2014-08-13T13:20:00.159</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\UserSetting.txt">
+      <PackagePath>UserSetting.txt</PackagePath>
+      <Modified>2014-09-04T08:17:54.722</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
       <Modified>2014-08-19T12:42:54.677</Modified>
@@ -101,7 +105,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\ColorPicker.xbf">
       <PackagePath>ColorPicker.xbf</PackagePath>
-      <Modified>2014-09-04T05:34:20.540</Modified>
+      <Modified>2014-09-04T08:22:41.939</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\ItemEditPage.xbf">
       <PackagePath>ItemEditPage.xbf</PackagePath>
@@ -109,15 +113,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\SettingOptionsPage.xbf">
       <PackagePath>SettingOptionsPage.xbf</PackagePath>
-      <Modified>2014-08-19T15:45:28.621</Modified>
+      <Modified>2014-09-04T08:21:33.273</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\NodePad.Windows.xr.xml">
       <PackagePath>NodePad.Windows.xr.xml</PackagePath>
-      <Modified>2014-09-04T05:34:20.310</Modified>
+      <Modified>2014-09-04T07:58:32.776</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-08-19T12:45:07.501</Modified>
+      <Modified>2014-09-04T08:19:53.165</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

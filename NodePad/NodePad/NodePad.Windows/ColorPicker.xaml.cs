@@ -33,13 +33,16 @@ namespace NodePad {
 		Windows.UI.Color FinalColor, MainColor, GrayColor;
 		Point relativeFinalColorPosition;
 		double relativeMainColor, relativeGrayColor;
+		Brush refColor;
 
 		public Windows.UI.Color color {
 			get {
-				return FinalColor;
+				return GetFinalColor();
 			}
 			set {
 				FinalColor = value;
+				Init();
+				ResetGraphics();
 			}
 		}
 
@@ -103,21 +106,22 @@ namespace NodePad {
 		void ResetGraphics() {
 			Canvas.SetTop(rectSelectGray, rectGrayColor.Height * relativeGrayColor);
 			Canvas.SetTop(rectSelectMain, relativeMainColor * rectMainColor.Height);
-			Canvas.SetTop(elpSelectFinalIn, relativeFinalColorPosition.Y * rectFinalColor.Height - 3);
-			Canvas.SetLeft(elpSelectFinalIn, relativeFinalColorPosition.X * rectFinalColor.Width - 3 + 40);
+			Canvas.SetTop(elpSelectFinalIn, relativeFinalColorPosition.Y * rectFinalColor.Height - 4);
+			Canvas.SetLeft(elpSelectFinalIn, relativeFinalColorPosition.X * rectFinalColor.Width - 4 + 45);
 			Canvas.SetTop(elpSelectFinalOut, relativeFinalColorPosition.Y * rectFinalColor.Height - 5);
-			Canvas.SetLeft(elpSelectFinalOut, relativeFinalColorPosition.X * rectFinalColor.Width - 5 + 40);
+			Canvas.SetLeft(elpSelectFinalOut, relativeFinalColorPosition.X * rectFinalColor.Width - 5 + 45);
 			gspGrayPart.Color = GrayColor;
 			gspMainPart.Color = MainColor;
+			refColor = new SolidColorBrush(color);
 		}
 
 		Windows.UI.Color GetFinalColor() {
-			Windows.UI.Color c = new Windows.UI.Color();
-			c.A = 255;
-			c.R = (Byte)(GrayColor.R + (MainColor.R - GrayColor.R) * relativeFinalColorPosition.X);
-			c.G = (Byte)(GrayColor.G + (MainColor.G - GrayColor.G) * relativeFinalColorPosition.X);
-			c.B = (Byte)(GrayColor.B + (MainColor.R - GrayColor.B) * relativeFinalColorPosition.X);
-			return c;
+			FinalColor = new Windows.UI.Color();
+			FinalColor.A = 255;
+			FinalColor.R = (Byte)(GrayColor.R + (MainColor.R - GrayColor.R) * relativeFinalColorPosition.X);
+			FinalColor.G = (Byte)(GrayColor.G + (MainColor.G - GrayColor.G) * relativeFinalColorPosition.X);
+			FinalColor.B = (Byte)(GrayColor.B + (MainColor.B - GrayColor.B) * relativeFinalColorPosition.X);
+			return FinalColor;
 		}
 
 		private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e) {
@@ -130,6 +134,117 @@ namespace NodePad {
 
 		private void UserControl_PointerMoved(object sender, PointerRoutedEventArgs e) {
 
+		}
+
+		private void rectGrayColor_PointerPressed(object sender, PointerRoutedEventArgs e) {
+			var po = e.GetCurrentPoint(rectGrayColor);
+			relativeGrayColor = po.Position.Y / rectGrayColor.Height;
+			Color c = new Color();
+			c.A = 255;
+			c.R = c.G = c.B = (Byte)((1 - relativeGrayColor) * 255);
+			GrayColor = c;
+			ResetGraphics();
+		}
+
+		private void rectGrayColor_PointerMoved(object sender, PointerRoutedEventArgs e) {
+			if (e.Pointer.IsInContact) {
+				var po = e.GetCurrentPoint(rectGrayColor);
+				relativeGrayColor = po.Position.Y / rectGrayColor.Height;
+				Color c = new Color();
+				c.A = 255;
+				c.R = c.G = c.B = (Byte)((1 - relativeGrayColor) * 255);
+				GrayColor = c;
+				ResetGraphics();
+			}
+		}
+
+		private void rectMainColor_PointerPressed(object sender, PointerRoutedEventArgs e) {
+			var po = e.GetCurrentPoint(rectMainColor);
+			relativeMainColor = po.Position.Y / rectMainColor.Height;
+			MainColor = GetMainColor(relativeMainColor);
+			ResetGraphics();
+		}
+
+		private void rectMainColor_PointerMoved(object sender, PointerRoutedEventArgs e) {
+			if (e.Pointer.IsInContact) {
+				var po = e.GetCurrentPoint(rectMainColor);
+				relativeMainColor = po.Position.Y / rectMainColor.Height;
+				MainColor = GetMainColor(relativeMainColor);
+				ResetGraphics();
+			}
+		}
+
+		private Color GetMainColor(double k) {
+			Color c = new Color();
+			c.A = 255;
+			if (k < 1.0 / 6) {
+				k -= 1.0 / 6;
+				k = -k;
+				k *= 6;
+				c.R = 255;
+				c.B = 0;
+				k = 1 - k;
+				c.G = (Byte)(k * 255);
+			}
+			else if (k < 1.0 / 3) {
+				k -= 1.0 / 3;
+				k = -k;
+				k *= 6;
+				c.G = 255;
+				c.B = 0;
+				c.R = (Byte)(k * 255);
+			}
+			else if (k < 1.0 / 2) {
+				k -= 0.5;
+				k = -k;
+				k *= 6;
+				c.R = 0;
+				c.G = 255;
+				k = 1 - k;
+				c.B = (Byte)(k * 255);
+			}
+			else if (k < 2.0 / 3) {
+				k -= 2.0 / 3;
+				k = -k;
+				k *= 6;
+				c.R = 0;
+				c.B = 255;
+				c.G = (Byte)(k * 255);
+			}
+			else if (k < 5.0 / 6) {
+				k -= 5.0 / 6;
+				k = -k;
+				k *= 6;
+				c.G = 0;
+				c.B = 255;
+				k = 1 - k;
+				c.R = (Byte)(k * 255);
+			}
+			else {
+				k--;
+				k = -k;
+				k *= 6;
+				c.R = 255;
+				c.G = 0;
+				c.B = (Byte)(k * 255);
+			}
+			return c;
+		}
+
+		private void rectFinalColor_PointerPressed(object sender, PointerRoutedEventArgs e) {
+			var po = e.GetCurrentPoint(rectFinalColor);
+			relativeFinalColorPosition.X = po.Position.X / rectFinalColor.Width;
+			relativeFinalColorPosition.Y = po.Position.Y / rectFinalColor.Height;
+			ResetGraphics();
+		}
+
+		private void rectFinalColor_PointerMoved(object sender, PointerRoutedEventArgs e) {
+			if (e.Pointer.IsInContact) {
+				var po = e.GetCurrentPoint(rectFinalColor);
+				relativeFinalColorPosition.X = po.Position.X / rectFinalColor.Width;
+				relativeFinalColorPosition.Y = po.Position.Y / rectFinalColor.Height;
+				ResetGraphics();
+			}
 		}
 
 		/*
