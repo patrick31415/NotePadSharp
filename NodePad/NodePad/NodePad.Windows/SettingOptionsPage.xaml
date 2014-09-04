@@ -1,0 +1,107 @@
+﻿<SettingsFlyout
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NodePad"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UI="using:Microsoft.Advertising.WinRT.UI"
+    x:Class="NodePad.SettingOptionsPage"
+    mc:Ignorable="d"
+    IconSource="Assets/SmallLogo.png"
+    Title="选项"
+    d:DesignWidth="346">
+	<SettingsFlyout.HeaderBackground>
+		<StaticResource ResourceKey="MainThemeBrush1"/>
+	</SettingsFlyout.HeaderBackground>
+
+	<!-- 此 StackPanel 充当内容部分的垂直布局的根面板-->
+	<StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+		<!-- 下列 StackPanel 定义个别内容部分-->
+
+		<!-- 第 1 部分内容-->
+		<StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}" Width="250">
+
+			<!-- 第 1 部分标题-->
+			<TextBlock Style="{StaticResource SettingCharmTitleStyle}" Text="以下选项都会立刻保存"  />
+
+			<!-- 第 1 部分正文-->
+			<TextBlock Style="{StaticResource SettingCharmTextStyle}" Margin="0,0,0,25" TextWrapping="Wrap">
+				<LineBreak />
+				<Run Text=" 示例："/>
+			</TextBlock>
+		</StackPanel>
+
+		<ScrollViewer VerticalScrollBarVisibility="Auto">
+			<StackPanel>
+				<StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
+					<TextBlock Style="{StaticResource SettingCharmTextStyle}" Text="字体：" Width="90" />
+					<ComboBox x:Name="cbxFontFamily" Width="145" />
+				</StackPanel>
+				<StackPanel Height="20" />
+
+				<StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
+					<TextBlock Style="{StaticResource SettingCharmTextStyle}" Text="字号：" Width="90" />
+					<ComboBox x:Name="cbxFontSize" Width="145" />
+				</StackPanel>
+				<StackPanel Height="20" />
+
+				<StackPanel>
+					<TextBlock Text="自动换行：" Style="{StaticResource SettingCharmTextStyle}" />
+					<ToggleSwitch IsOn="True" />
+				</StackPanel>
+				<StackPanel Height="10" />
+
+				<StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="字体颜色：" Style="{StaticResource SettingCharmTextStyle}" />
+						<Canvas x:Name="cvsTest"  Height="20" Width="50" Background="Black" Margin="20,5" PointerPressed="cvsTest_PointerPressed" />
+					</StackPanel>
+					<StackPanel Height="10" />
+				</StackPanel>
+				
+				
+				<StackPanel>
+					<Canvas x:Name="colorPicker" Width="280" Height="280" Visibility="Visible">
+						<Rectangle x:Name="rectGrayColor" Height="180" Width="30">
+							<Rectangle.Fill>
+								<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+									<GradientStop Color="Black" Offset="1"/>
+									<GradientStop Color="White" Offset="0"/>
+								</LinearGradientBrush>
+							</Rectangle.Fill>
+						</Rectangle>
+						<Rectangle x:Name="rectSelectGray" Width="30" Height="1" Fill="Black" />
+						<Rectangle x:Name="rectFinalColor" Width="180" Height="180" Canvas.Left="40" Canvas.Top="0">
+							<Rectangle.Fill>
+								<LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
+									<GradientStop x:Name="gspGrayPart" Offset="1" Color="White"/>
+									<GradientStop x:Name="gspMainPart" Offset="0" Color="Blue" />
+								</LinearGradientBrush>
+							</Rectangle.Fill>
+						</Rectangle>
+						<Rectangle x:Name="rectMainColor" Width="30" Height="180" Canvas.Left="230" Canvas.Top="0">
+							<Rectangle.Fill>
+								<LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1" >
+									<GradientStop Color="Red" Offset="1"/>
+									<GradientStop Color="Red"/>
+									<GradientStop Color="Yellow" Offset="0.83333333"/>
+									<GradientStop Color="Lime" Offset="0.6666666666667"/>
+									<GradientStop Color="Cyan" Offset="0.5"/>
+									<GradientStop Color="Blue" Offset="0.333333333333"/>
+									<GradientStop Color="Magenta" Offset="0.1666666667"/>
+								</LinearGradientBrush>
+							</Rectangle.Fill>
+						</Rectangle>
+						<Rectangle x:Name="rectSelectMain" Width="30" Height="1" Canvas.Left="230" Canvas.Top="0" Fill="Black" />
+						<Ellipse x:Name="elpSelectFinalOut" Canvas.Left="35" Canvas.Top="-5" Height="10" Width="10" Stroke="Black" />
+						<Ellipse x:Name="elpSelectFinalIn" Canvas.Left="37" Canvas.Top="-3" Height="6" Width="6" Stroke="White" />
+					</Canvas>
+				</StackPanel>
+				<StackPanel >
+					<TextBlock Text="Hello world!" Style="{StaticResource SettingCharmTextStyle}" />
+				</StackPanel>
+			</StackPanel>
+		</ScrollViewer>
+	</StackPanel>
+</SettingsFlyout>

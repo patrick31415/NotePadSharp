@@ -4,8 +4,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NodePad">
 	<Application.Resources>
-
 		<SolidColorBrush x:Key="MainThemeBrush" Color="#FF10C1FF"/>
+		<SolidColorBrush x:Key="MainThemeBrush1" Color="#FF109DFF"/>
+		<Style x:Key="SettingCharmTextStyle" BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
+			<Setter Property="FontWeight" Value="SemiLight"/>
+			<Setter Property="FontFamily" Value="Microsoft Yahei" />
+			<Setter Property="FontSize" Value="17" />
+		</Style>
+		<Style x:Key="SettingCharmTitleStyle" BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="FontFamily" Value="Microsoft Yahei" />
+			<Setter Property="FontSize" Value="15" />
+		</Style>
 
 	</Application.Resources>
 

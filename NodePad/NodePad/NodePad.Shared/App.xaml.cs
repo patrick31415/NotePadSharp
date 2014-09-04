@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -52,6 +53,9 @@ namespace NodePad {
 
 			Frame rootFrame = Window.Current.Content as Frame;
 
+#if WINDOWS_APP
+			SettingsPane.GetForCurrentView().CommandsRequested += App_CommandsRequested;
+#endif
 			// 不要在窗口已包含内容时重复应用程序初始化，
 			// 只需确保窗口处于活动状态
 			if (rootFrame == null) {
@@ -95,6 +99,19 @@ namespace NodePad {
 
 			// 确保当前窗口处于活动状态
 			Window.Current.Activate();
+		}
+
+		void App_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args) {
+			args.Request.ApplicationCommands.Add(new SettingsCommand("about", "关于", (x) => {
+				var Page = new AboutPage();
+				Page.Show();
+			}));
+			args.Request.ApplicationCommands.Add(new SettingsCommand("option", "选项", (x) => {
+				var Page = new SettingOptionsPage();
+				Page.Show();
+			}));
+			
+			//throw new NotImplementedException();
 		}
 
 #if WINDOWS_PHONE_APP
