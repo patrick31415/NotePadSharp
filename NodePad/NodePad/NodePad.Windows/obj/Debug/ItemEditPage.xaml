@@ -8,7 +8,7 @@
     xmlns:common="using:NodePad.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"                                   >
+    mc:Ignorable="d"                                                            >
 
 	<Page.Resources>
 		<!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
@@ -73,7 +73,7 @@
 
 		<ScrollViewer Grid.Column="1" Grid.Row="1" Margin="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" >
 			<Grid x:Name="gContainer" Margin="25,0,25,50">
-				<TextBox x:Name="tbxContent" FontFamily="Microsoft Yahei" FontSize="20" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+				<TextBox x:Name="tbxContent" FontFamily="Microsoft Yahei" FontSize="20" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Foreground="Black" />
 			</Grid>
 		</ScrollViewer>
 
@@ -126,7 +126,7 @@
 
 	<Page.TopAppBar>
 		<AppBar x:Name="topSwitchBar">
-			<ListBox x:Name="lstFileList" Margin="2" />
+			
 		</AppBar>
 	</Page.TopAppBar>
 </Page>

@@ -120,6 +120,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UIwords.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutPage.xaml.cs">
@@ -154,12 +159,14 @@
     <Content Include="Assets\Square70x70Logo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
-    <Content Include="UserSetting.txt" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="MSAdvertisingXaml, Version=8.1">
       <Name>MSAdvertisingXaml</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

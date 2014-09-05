@@ -8,7 +8,6 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
-using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -54,7 +53,7 @@ namespace NodePad {
 			Frame rootFrame = Window.Current.Content as Frame;
 
 #if WINDOWS_APP
-			SettingsPane.GetForCurrentView().CommandsRequested += App_CommandsRequested;
+			Windows.UI.ApplicationSettings.SettingsPane.GetForCurrentView().CommandsRequested += App_CommandsRequested;
 #endif
 			// 不要在窗口已包含内容时重复应用程序初始化，
 			// 只需确保窗口处于活动状态
@@ -101,19 +100,20 @@ namespace NodePad {
 			Window.Current.Activate();
 		}
 
-		void App_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args) {
-			args.Request.ApplicationCommands.Add(new SettingsCommand("about", "关于", (x) => {
+#if WINDOWS_APP
+		void App_CommandsRequested(Windows.UI.ApplicationSettings.SettingsPane sender, Windows.UI.ApplicationSettings.SettingsPaneCommandsRequestedEventArgs args) {
+			args.Request.ApplicationCommands.Add(new Windows.UI.ApplicationSettings.SettingsCommand("about", "关于", (x) => {
 				var Page = new AboutPage();
 				Page.Show();
 			}));
-			args.Request.ApplicationCommands.Add(new SettingsCommand("option", "选项", (x) => {
+			args.Request.ApplicationCommands.Add(new Windows.UI.ApplicationSettings.SettingsCommand("option", "选项", (x) => {
 				var Page = new SettingOptionsPage();
 				Page.Show();
 			}));
 			
 			//throw new NotImplementedException();
 		}
-
+#endif
 #if WINDOWS_PHONE_APP
         /// <summary>
         /// 启动应用程序后还原内容转换。

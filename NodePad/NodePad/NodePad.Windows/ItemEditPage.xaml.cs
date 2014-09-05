@@ -67,7 +67,7 @@ namespace NodePad {
 			for (int i = 0; i < n; ++i) {
 				vm[i] = new VisualModel();
 				vm[i].Title = i.ToString();
-				vm[i].Subtitle = "s" + i.ToString();
+				vm[i].Subtitle = "\ts" + i.ToString();
 			}
 
 			var result =
@@ -138,5 +138,52 @@ namespace NodePad {
 			}
 		}
 
+		private async void pageRoot_Loaded(object sender, RoutedEventArgs e) {
+			try {
+				Windows.Storage.StorageFile f = null;
+				bool q = false;
+				var g = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFilesAsync();
+				foreach (Windows.Storage.StorageFile ff in g) {
+					if (ff.Name == "UserSetting.txt") {
+						q = true;
+						f = ff;
+						break;
+					}
+				}
+				if (!q) {
+					f = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync("UserSetting.txt");
+					string t = "20 0 0 0 255 255 255 1";
+					await Windows.Storage.FileIO.WriteTextAsync(f, t);
+				}
+				string[] s = (await Windows.Storage.FileIO.ReadTextAsync(f)).Split(' ');
+				tbxContent.FontSize = Convert.ToInt32(s[0]);
+				Windows.UI.Color color = new Windows.UI.Color();
+				color.A = 255;
+				color.R = Convert.ToByte(s[1]);
+				color.G = Convert.ToByte(s[2]);
+				color.B = Convert.ToByte(s[3]);
+				tbxContent.Foreground = new SolidColorBrush(color);
+
+				color.R = Convert.ToByte(s[4]);
+				color.G = Convert.ToByte(s[5]);
+				color.B = Convert.ToByte(s[6]);
+				tbxContent.Background = new SolidColorBrush(color);
+
+				int d = Convert.ToInt32(s[7]);
+				switch (d) {
+					case 1:
+						tbxContent.TextWrapping = TextWrapping.Wrap;
+						break;
+					case 2:
+						tbxContent.TextWrapping = TextWrapping.NoWrap;
+						break;
+					default:
+						break;
+				}
+			}
+			catch (Exception p) {
+				tbxContent.Text = p.ToString();
+			}
+		}
 	}
 }

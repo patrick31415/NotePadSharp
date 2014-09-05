@@ -7,7 +7,7 @@
 
     有关程序包清单文件的详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="200c93fe-b1ce-4f5b-8f85-acc79f5bba46" Publisher="CN=Patrick" Version="0.0.0.2" ProcessorArchitecture="neutral" />
+  <Identity Name="200c93fe-b1ce-4f5b-8f85-acc79f5bba46" Publisher="CN=Patrick" Version="0.0.0.3" ProcessorArchitecture="neutral" />
   <Properties>
     <DisplayName>NodePad</DisplayName>
     <PublisherDisplayName>Patrick</PublisherDisplayName>
@@ -65,7 +65,6 @@
     </Application>
   </Applications>
   <Capabilities>
-    <Capability Name="musicLibrary" />
     <Capability Name="documentsLibrary" />
   </Capabilities>
   <Extensions>

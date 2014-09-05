@@ -68,9 +68,6 @@
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\UserSetting.txt">
-      <PackagePath>UserSetting.txt</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
@@ -85,6 +82,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\SettingOptionsPage.xbf">
       <PackagePath>SettingOptionsPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\UIwords.xbf">
+      <PackagePath>UIwords.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\NodePad.Windows.xr.xml">
       <PackagePath>NodePad.Windows.xr.xml</PackagePath>

@@ -49,3 +49,8 @@ D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\Color
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\ColorPicker.g.cs
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\ColorPicker.xaml
 D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\ColorPicker.xbf
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\bin\Debug\UIwords.xbf
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\UIwords.g.i.cs
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\UIwords.g.cs
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\UIwords.xaml
+D:\documents\GitHub\NotePadSharp\NodePad\NodePad\NodePad.Windows\obj\Debug\UIwords.xbf
