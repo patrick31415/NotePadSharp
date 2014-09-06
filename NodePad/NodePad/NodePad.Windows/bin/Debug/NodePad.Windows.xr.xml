@@ -155,6 +155,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="ItemsSource" />
+      <RootProperty Name="FontFamily" />
       <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
@@ -174,6 +175,7 @@
       <RootProperty Name="AcceptsReturn" />
       <RootProperty Name="IsReadOnly" />
       <RootProperty Name="Foreground" />
+      <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
@@ -218,6 +220,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="NodePad.ItemEditPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">

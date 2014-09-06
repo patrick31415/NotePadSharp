@@ -146,14 +146,13 @@ namespace NodePad {
 			StorageFile obj = args.Files[0] as StorageFile;
 
 			Frame rootPage = Window.Current.Content as Frame;
-			if (rootPage == null) 
-				rootPage = new Frame();
+			rootPage = new Frame();
+			rootPage.CacheSize = 1;
 			Window.Current.Content = rootPage;
 
 			if (!rootPage.Navigate(typeof(ItemEditPage), obj)) {
 				throw new Exception("文件打开失败");
 			}
-			//ItemEditPage.SetPara(obj);
 
 			//base.OnFileActivated(args);
 			Window.Current.Activate();

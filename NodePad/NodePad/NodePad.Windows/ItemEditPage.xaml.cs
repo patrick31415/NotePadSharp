@@ -25,7 +25,9 @@ namespace NodePad {
 
 		private NavigationHelper navigationHelper;
 		private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
+		private Windows.Storage.StorageFile File = null;
+		bool isSaved = false;
+		int stat = 1, preStat = 0;
 
 		private class VisualModel {
 			public string Title, Subtitle;
@@ -61,20 +63,6 @@ namespace NodePad {
 			this.navigationHelper = new NavigationHelper(this);
 			this.navigationHelper.LoadState += navigationHelper_LoadState;
 			this.navigationHelper.SaveState += navigationHelper_SaveState;
-
-			int n = 100;
-			VisualModel[] vm = new VisualModel[n];
-			for (int i = 0; i < n; ++i) {
-				vm[i] = new VisualModel();
-				vm[i].Title = i.ToString();
-				vm[i].Subtitle = "\ts" + i.ToString();
-			}
-
-			var result =
-				from t in vm
-				select new { Title = t.Title, Subtitle = t.Subtitle };
-
-			this.ItemViewSource.Source = result;
 		}
 
 		/// <summary>
@@ -89,6 +77,8 @@ namespace NodePad {
 		/// 此页在以前会话期间保留的状态的
 		/// 的字典。 首次访问页面时，该状态将为 null。</param>
 		private void navigationHelper_LoadState(object sender, LoadStateEventArgs e) {
+			File = e.NavigationParameter as Windows.Storage.StorageFile;
+			SetUI();
 		}
 
 		/// <summary>
@@ -184,6 +174,152 @@ namespace NodePad {
 			catch (Exception p) {
 				tbxContent.Text = p.ToString();
 			}
+		}
+
+		async void ShowProperties() {
+			int n = 5;
+			VisualModel[] vm = new VisualModel[n];
+			for (int i = 0; i < n; ++i)
+				vm[i] = new VisualModel();
+
+			vm[0].Title = "创建时间：";
+			vm[0].Subtitle = File.DateCreated.ToString();
+			vm[1].Title = "修改时间：";
+			vm[1].Subtitle = (await File.GetBasicPropertiesAsync()).ItemDate.ToString();
+			vm[2].Title = "当前路径：";
+			vm[2].Subtitle = File.Path;
+			vm[3].Title = "   拓展名：*";
+			vm[3].Subtitle = File.FileType.ToString();
+			vm[4].Title = "文件类型：";
+			vm[4].Subtitle = File.DisplayType;
+
+			var result =
+				from t in vm
+				select new { Title = t.Title, Subtitle = t.Subtitle };
+
+			this.ItemViewSource.Source = result;
+		}
+
+		async void SetUI() {
+			if (File != null) {
+				pageTitle.Text = File.Name;
+				bool isLegal = true;
+				try {
+					tbxContent.Text = await Windows.Storage.FileIO.ReadTextAsync(File);
+				}
+				catch {
+					isLegal = false;
+				}
+				if (!isLegal) {
+					Windows.UI.Popups.MessageDialog msg = new Windows.UI.Popups.MessageDialog("由于该文件不是UTF-8编码，无法正常打开");
+					await msg.ShowAsync();
+				}
+			}
+			else {
+				pageTitle.Text = "Untitled";
+				tbxContent.Text = "";
+			}
+		}
+
+		private async void btnNew_Click(object sender, RoutedEventArgs e) {
+			if (isSaved) {
+				File = null;
+				preStat = stat - 1;
+				SetUI();
+			}
+			else {
+				Windows.UI.Popups.MessageDialog msg = new Windows.UI.Popups.MessageDialog("修改的文本是否需要保存？");
+
+				msg.Commands.Add(new Windows.UI.Popups.UICommand("是", null, 0));
+				msg.Commands.Add(new Windows.UI.Popups.UICommand("否", null, 1));
+				var fl =(await msg.ShowAsync()).Id as int?;
+				switch (fl) {
+					case 0:
+						Windows.Storage.Pickers.FileSavePicker fsp = new Windows.Storage.Pickers.FileSavePicker();
+						fsp.DefaultFileExtension = ".txt";
+						fsp.FileTypeChoices.Add("text", new List<string>() { ".txt" });
+						var Sf = await fsp.PickSaveFileAsync();
+						if (Sf != null) {
+							await Windows.Storage.FileIO.WriteTextAsync(Sf, tbxContent.Text);
+							File = null;
+							preStat = stat - 1;
+							SetUI();
+						}
+						break;
+					default:
+						break;
+				}
+			}
+		}
+
+		private async void btnSave_Click(object sender, RoutedEventArgs e) {
+			if (File == null) 
+				btnSaveAs_Click(sender, e);
+			else {
+				await Windows.Storage.FileIO.WriteTextAsync(File, tbxContent.Text);
+				isSaved = true;
+				preStat = stat - 1;
+			}
+		}
+
+		private async void btnSaveAs_Click(object sender, RoutedEventArgs e) {
+			Windows.Storage.Pickers.FileSavePicker fsp = new Windows.Storage.Pickers.FileSavePicker();
+			fsp.DefaultFileExtension = ".txt";
+			fsp.FileTypeChoices.Add("text", new List<string>() { ".txt" });
+			var Sf = await fsp.PickSaveFileAsync();
+			if (Sf != null) {
+				File = Sf;
+				await Windows.Storage.FileIO.WriteTextAsync(File, tbxContent.Text);
+				SetUI();
+				preStat = stat - 1;
+				isSaved = true;
+			}
+		}
+
+		private async void btnOpen_Click(object sender, RoutedEventArgs e) {
+			if (isSaved) {
+				Windows.Storage.Pickers.FileOpenPicker fop = new Windows.Storage.Pickers.FileOpenPicker();
+				fop.FileTypeFilter.Add(".txt");
+				fop.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
+				var Sf = await fop.PickSingleFileAsync();
+				if (Sf != null) {
+					File = Sf;
+					preStat = stat - 1;
+					SetUI();
+				}
+			}
+			else {
+				Windows.UI.Popups.MessageDialog msg = new Windows.UI.Popups.MessageDialog("修改的文本是否需要保存？");
+
+				msg.Commands.Add(new Windows.UI.Popups.UICommand("是", null, 0));
+				msg.Commands.Add(new Windows.UI.Popups.UICommand("否", null, 1));
+				var fl = (await msg.ShowAsync()).Id as int?;
+				switch (fl) {
+					case 0:
+						Windows.Storage.Pickers.FileSavePicker fsp = new Windows.Storage.Pickers.FileSavePicker();
+						fsp.DefaultFileExtension = ".txt";
+						fsp.FileTypeChoices.Add("text", new List<string>() { ".txt" });
+						var Sf = await fsp.PickSaveFileAsync();
+						if (Sf != null) {
+							await Windows.Storage.FileIO.WriteTextAsync(Sf, tbxContent.Text);
+							File = null;
+							preStat = stat - 1;
+							SetUI();
+						}
+						break;
+					default:
+						break;
+				}
+				isSaved = true;
+				btnOpen_Click(sender, e);
+			}
+		}
+
+		private void tbxContent_TextChanged(object sender, TextChangedEventArgs e) {
+			if (stat == preStat) 
+				isSaved = false;
+			else 
+				preStat = stat;
 		}
 	}
 }

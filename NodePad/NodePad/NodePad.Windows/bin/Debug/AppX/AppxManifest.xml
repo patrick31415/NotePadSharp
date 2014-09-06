@@ -43,7 +43,7 @@
         <Extension Category="windows.fileSavePicker">
           <FileSavePicker>
             <SupportedFileTypes>
-              <SupportsAnyFileType />
+              <FileType>.txt</FileType>
             </SupportedFileTypes>
           </FileSavePicker>
         </Extension>

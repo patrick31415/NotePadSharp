@@ -40,7 +40,7 @@
 		<!-- Back button and page title -->
 		<Grid x:Name="gTitle" Margin="0,0,0,0" Grid.ColumnSpan="2">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition x:Name="TitlePrimaryColumn" Width="120*" />
+				<ColumnDefinition x:Name="TitlePrimaryColumn" Width="125*" />
 				<ColumnDefinition Width="1200*" />
 			</Grid.ColumnDefinitions>
 			<Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
@@ -52,7 +52,7 @@
 			<TextBlock x:Name="pageTitle" Text="{StaticResource FileName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,0,40" HorizontalAlignment="Left" Width="295"/>
 		</Grid>
-		<ListBox x:Name="lstInfo" Margin="50,2,0,50" Grid.Row="1" HorizontalAlignment="Left" Width="370" ItemsSource="{Binding Source={StaticResource ItemViewSource}}" >
+		<ListBox x:Name="lstInfo" Margin="50,2,0,50" Grid.Row="1" HorizontalAlignment="Left" Width="370" ItemsSource="{Binding Source={StaticResource ItemViewSource}}" FontFamily="Microsoft Yahei" >
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Orientation="Horizontal">
@@ -73,7 +73,7 @@
 
 		<ScrollViewer Grid.Column="1" Grid.Row="1" Margin="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" >
 			<Grid x:Name="gContainer" Margin="25,0,25,50">
-				<TextBox x:Name="tbxContent" FontFamily="Microsoft Yahei" FontSize="20" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Foreground="Black" />
+				<TextBox x:ConnectionId='2' x:Name="tbxContent" FontFamily="Microsoft Yahei" FontSize="20" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Foreground="Black"                                      />
 			</Grid>
 		</ScrollViewer>
 
@@ -113,12 +113,12 @@
 					<ColumnDefinition Width="30*" />
 				</Grid.ColumnDefinitions>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="0">
-					<AppBarButton x:Name="btnNew" Icon="NewFolder" Label="New" />
-					<AppBarButton x:Name="btnSave" Icon="Save" Label="Save" />
-					<AppBarButton x:Name="btnSaveAs" Icon="SaveLocal" Label="Save As" />
+					<AppBarButton x:ConnectionId='4' x:Name="btnNew" Icon="NewFolder" Label="New"                      />
+					<AppBarButton x:ConnectionId='5' x:Name="btnSave" Icon="Save" Label="Save"                       />
+					<AppBarButton x:ConnectionId='6' x:Name="btnSaveAs" Icon="SaveLocal" Label="Save As"                         />
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
-					<AppBarButton x:Name="btnOpen" Icon="OpenFile" Label="Open" />
+					<AppBarButton x:ConnectionId='3' x:Name="btnOpen" Icon="OpenFile" Label="Open"                       />
 				</StackPanel>
 			</Grid>
 		</AppBar>
