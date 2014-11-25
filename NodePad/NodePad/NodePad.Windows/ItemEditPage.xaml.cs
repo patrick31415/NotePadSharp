@@ -62,7 +62,17 @@ namespace NodePad {
 		/// 的字典。 首次访问页面时，该状态将为 null。</param>
 		private void navigationHelper_LoadState(object sender, LoadStateEventArgs e) {
 			File = e.NavigationParameter as Windows.Storage.StorageFile;
-			SetUI();
+			if (e.PageState == null) {
+				File = e.NavigationParameter as Windows.Storage.StorageFile;
+				SetUI();
+			}
+			else {
+				if (e.PageState.ContainsKey("fileLoading")) {
+					File = e.PageState["fileLoading"] as Windows.Storage.StorageFile;
+					tbxContent.Text = e.PageState["tbxContent"] as string;
+					isSaved = (bool)(e.PageState["isSave"] as bool?);
+				}
+			}
 		}
 
 		/// <summary>
@@ -74,6 +84,9 @@ namespace NodePad {
 		///<param name="e">提供要使用可序列化状态填充的空字典
 		///的事件数据。</param>
 		private void navigationHelper_SaveState(object sender, SaveStateEventArgs e) {
+			e.PageState["fileLoading"] = File;
+			e.PageState["tbxContent"] = tbxContent.Text;
+			e.PageState["isSave"] = isSaved;
 		}
 
 		#region NavigationHelper 注册

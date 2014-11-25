@@ -141,11 +141,19 @@ namespace NodePad {
 		}
 
 		Visibility CompareColor(Windows.UI.Color color1, Windows.UI.Color color2) {
-			int r = color1.R - color2.R;
-			int g = color1.G - color2.G;
-			int b = color1.B - color2.B;
+			Byte minB = color1.R > color1.G ? color1.G : color1.R;
+			minB = minB > color1.B ? color1.B : minB;
+			Byte maxB = color1.R > color1.G ? color1.R : color1.G;
+			maxB = maxB > color1.B ? maxB : color1.B;
+			double p1 = maxB - minB == 0 ? 0.5 : (double)(minB * 255 / (255 + minB - maxB));
 
-			if (r * r + g * g + b * b <= 9000)
+			minB = color2.R > color2.G ? color2.G : color2.R;
+			minB = minB > color2.B ? color2.B : minB;
+			maxB = color2.R > color2.G ? color2.R : color2.G;
+			maxB = maxB > color2.B ? maxB : color2.B;
+			double p2 = maxB - minB == 0 ? 0.5 : (double)(minB * 255 / (255 + minB - maxB));
+
+			if (Math.Abs(p1 - p2) < 0.3)
 				return Windows.UI.Xaml.Visibility.Visible;
 			else
 				return Windows.UI.Xaml.Visibility.Collapsed;

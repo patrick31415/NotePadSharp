@@ -61,6 +61,8 @@ namespace NodePad {
 				// 创建要充当导航上下文的框架，并导航到第一页
 				rootFrame = new Frame();
 
+				NodePad.Common.SuspensionManager.RegisterFrame(rootFrame, "appFrame");
+
 				// TODO: 将此值更改为适合您的应用程序的缓存大小
 				rootFrame.CacheSize = 1;
 
@@ -135,10 +137,12 @@ namespace NodePad {
 		/// </summary>
 		/// <param name="sender">挂起的请求的源。</param>
 		/// <param name="e">有关挂起的请求的详细信息。</param>
-		private void OnSuspending(object sender, SuspendingEventArgs e) {
+		private async void OnSuspending(object sender, SuspendingEventArgs e) {
 			var deferral = e.SuspendingOperation.GetDeferral();
 
 			// TODO: 保存应用程序状态并停止任何后台活动
+			await NodePad.Common.SuspensionManager.SaveAsync();
+
 			deferral.Complete();
 		}
 
