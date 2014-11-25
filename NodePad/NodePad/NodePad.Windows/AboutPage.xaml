@@ -27,6 +27,10 @@
 				代码位于
 				<Hyperlink NavigateUri="https://github.com/patrick31415/NotePadSharp">GitHub</Hyperlink>
 				上
+				<LineBreak />
+				<LineBreak />
+				联系我
+				<Hyperlink NavigateUri="mailto:patrickilled@outlook.com">patrickilled@ouotlook.com</Hyperlink>
 			</TextBlock>
 
 		</StackPanel>

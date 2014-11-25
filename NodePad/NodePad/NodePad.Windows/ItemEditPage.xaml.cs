@@ -24,30 +24,14 @@ namespace NodePad {
 	public sealed partial class ItemEditPage : Page {
 
 		private NavigationHelper navigationHelper;
-		private ObservableDictionary defaultViewModel = new ObservableDictionary();
+		//private ObservableDictionary defaultViewModel = new ObservableDictionary();
 		private Windows.Storage.StorageFile File = null;
 		bool isSaved = false;
 		int stat = 1, preStat = 0;
 
-		private class VisualModel {
-			public string Title, Subtitle;
-
-			public VisualModel() {
-
-			}
-
-			public VisualModel(string s1, string s2) {
-				Title = s1;
-				Subtitle = s2;
-			}
-		}
-
 		/// <summary>
 		/// 可将其更改为强类型视图模型。
 		/// </summary>
-		public ObservableDictionary DefaultViewModel {
-			get { return this.defaultViewModel; }
-		}
 
 		/// <summary>
 		/// NavigationHelper 在每页上用于协助导航和
@@ -114,7 +98,7 @@ namespace NodePad {
 		#endregion
 
 		private void _new_Click(object sender, RoutedEventArgs e) {
-			tbxContent.Text = lstInfo.MaxHeight.ToString();
+			//tbxContent.Text = lstInfo.MaxHeight.ToString();
 		}
 
 		private void pageRoot_SizeChanged(object sender, SizeChangedEventArgs e) {
@@ -142,7 +126,7 @@ namespace NodePad {
 				}
 				if (!q) {
 					f = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync("UserSetting.txt");
-					string t = "20 0 0 0 255 255 255 1";
+					string t = "20 0 0 0 255 255 255 1 1";
 					await Windows.Storage.FileIO.WriteTextAsync(f, t);
 				}
 				string[] s = (await Windows.Storage.FileIO.ReadTextAsync(f)).Split(' ');
@@ -159,7 +143,8 @@ namespace NodePad {
 				color.B = Convert.ToByte(s[6]);
 				tbxContent.Background = new SolidColorBrush(color);
 
-				int d = Convert.ToInt32(s[7]);
+				//自动换行
+				int d = (s[7] == null) ? 1 : Convert.ToInt32(s[7]);
 				switch (d) {
 					case 1:
 						tbxContent.TextWrapping = TextWrapping.Wrap;
@@ -170,34 +155,23 @@ namespace NodePad {
 					default:
 						break;
 				}
+
+				//粗体
+				d = (s[8] == null) ? 2 : Convert.ToInt32(s[8]);
+				switch (d) {
+					case 1:
+						tbxContent.FontWeight = Windows.UI.Text.FontWeights.Bold;
+						break;
+					case 2:
+						tbxContent.FontWeight = Windows.UI.Text.FontWeights.Normal;
+						break;
+					default:
+						break;
+				}
 			}
 			catch (Exception p) {
 				tbxContent.Text = p.ToString();
 			}
-		}
-
-		async void ShowProperties() {
-			int n = 5;
-			VisualModel[] vm = new VisualModel[n];
-			for (int i = 0; i < n; ++i)
-				vm[i] = new VisualModel();
-
-			vm[0].Title = "创建时间：";
-			vm[0].Subtitle = File.DateCreated.ToString();
-			vm[1].Title = "修改时间：";
-			vm[1].Subtitle = (await File.GetBasicPropertiesAsync()).ItemDate.ToString();
-			vm[2].Title = "当前路径：";
-			vm[2].Subtitle = File.Path;
-			vm[3].Title = "   拓展名：*";
-			vm[3].Subtitle = File.FileType.ToString();
-			vm[4].Title = "文件类型：";
-			vm[4].Subtitle = File.DisplayType;
-
-			var result =
-				from t in vm
-				select new { Title = t.Title, Subtitle = t.Subtitle };
-
-			this.ItemViewSource.Source = result;
 		}
 
 		async void SetUI() {
@@ -216,7 +190,7 @@ namespace NodePad {
 				}
 			}
 			else {
-				pageTitle.Text = "Untitled";
+				pageTitle.Text = Resources["FileName"] as string;
 				tbxContent.Text = "";
 			}
 		}

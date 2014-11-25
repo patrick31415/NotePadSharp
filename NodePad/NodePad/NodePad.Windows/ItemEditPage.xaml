@@ -12,7 +12,7 @@
 
 	<Page.Resources>
 		<!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-		<x:String x:Key="FileName">Untitled</x:String>
+		<x:String x:Key="FileName">无标题</x:String>
 
 		<CollectionViewSource x:Name="ItemViewSource" Source="{Binding Items}" />
 	</Page.Resources>
@@ -49,30 +49,12 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-			<TextBlock x:Name="pageTitle" Text="{StaticResource FileName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+			<TextBlock x:Name="pageTitle" Text="{StaticResource FileName}" Style="{StaticResource HeaderStyleForNodePad}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,0,40" HorizontalAlignment="Left" Width="295"/>
 		</Grid>
-		<ListBox x:Name="lstInfo" Margin="50,2,0,50" Grid.Row="1" HorizontalAlignment="Left" Width="370" ItemsSource="{Binding Source={StaticResource ItemViewSource}}" FontFamily="Microsoft Yahei" >
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<Grid>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="50*" />
-								<ColumnDefinition Width="50*" />
-							</Grid.ColumnDefinitions>
-							<TextBlock Text="{Binding Title}" Grid.Column="0" />
-							<StackPanel Grid.Column="1">
-								<TextBlock Text="{Binding Subtitle}" HorizontalAlignment="Right" />
-							</StackPanel>
-						</Grid>
-					</StackPanel>
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>
 
-		<ScrollViewer Grid.Column="1" Grid.Row="1" Margin="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" >
-			<Grid x:Name="gContainer" Margin="25,0,25,50">
+		<ScrollViewer Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" Margin="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" >
+			<Grid x:Name="gContainer" Margin="30,0,25,50">
 				<TextBox x:Name="tbxContent" FontFamily="Microsoft Yahei" FontSize="20" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Foreground="Black" TextChanged="tbxContent_TextChanged" />
 			</Grid>
 		</ScrollViewer>
@@ -84,9 +66,6 @@
 				<VisualState x:Name="Normal" />
 				<VisualState x:Name="State420">
 					<Storyboard>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="lstInfo" Storyboard.TargetProperty="Visibility">
-							<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
-						</ObjectAnimationUsingKeyFrames>
 						<ObjectAnimationUsingKeyFrames Storyboard.TargetName="primaryColumn" Storyboard.TargetProperty="Width" >
 							<DiscreteObjectKeyFrame KeyTime="0" Value="0" />
 						</ObjectAnimationUsingKeyFrames>
@@ -113,20 +92,14 @@
 					<ColumnDefinition Width="30*" />
 				</Grid.ColumnDefinitions>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="0">
-					<AppBarButton x:Name="btnNew" Icon="NewFolder" Label="New" Click="btnNew_Click" />
-					<AppBarButton x:Name="btnSave" Icon="Save" Label="Save" Click="btnSave_Click" />
-					<AppBarButton x:Name="btnSaveAs" Icon="SaveLocal" Label="Save As" Click="btnSaveAs_Click" />
+					<AppBarButton x:Name="btnNew" Icon="NewFolder" Label="新建" Click="btnNew_Click" />
+					<AppBarButton x:Name="btnSave" Icon="Save" Label="保存" Click="btnSave_Click" />
+					<AppBarButton x:Name="btnSaveAs" Icon="SaveLocal" Label="另存为" Click="btnSaveAs_Click" />
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
-					<AppBarButton x:Name="btnOpen" Icon="OpenFile" Label="Open" Click="btnOpen_Click" />
+					<AppBarButton x:Name="btnOpen" Icon="OpenFile" Label="打开" Click="btnOpen_Click"/>
 				</StackPanel>
 			</Grid>
 		</AppBar>
 	</Page.BottomAppBar>
-
-	<Page.TopAppBar>
-		<AppBar x:Name="topSwitchBar">
-			
-		</AppBar>
-	</Page.TopAppBar>
 </Page>

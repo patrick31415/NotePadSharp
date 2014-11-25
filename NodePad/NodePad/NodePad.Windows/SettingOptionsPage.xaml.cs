@@ -37,19 +37,22 @@ namespace NodePad {
 			}
 			cbxFontSize.SelectedIndex = (int) (tbx.FontSize / 2 - 1);
 
-			//if (tbx.TextWrapping == TextWrapping.Wrap)
-			//	tgsWrap.IsOn = true;
-			//else
-			//	tgsWrap.IsOn = false;
+			if (tbx.TextWrapping == TextWrapping.Wrap)
+				tgsWrap.IsOn = true;
+			else
+				tgsWrap.IsOn = false;
+
+			if ((int)(tbx.FontWeight.Weight) - (int)(Windows.UI.Text.FontWeights.Bold.Weight) < 0)
+				tgsBlod.IsOn = false;
+			else
+				tgsBlod.IsOn = true;
 
 			tblHint.Visibility = CompareColor(clpBackground.color, clpFont.color);
+
 		}
 
 		private void cvsTest_PointerPressed(object sender, PointerRoutedEventArgs e) {
-			if (clpFont.Visibility == Windows.UI.Xaml.Visibility.Visible)
-				clpFont.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-			else
-				clpFont.Visibility = Windows.UI.Xaml.Visibility.Visible;
+			clpFont.ChangeMode();
 		}
 
 		private void clpFont_PointerPressed(object sender, PointerRoutedEventArgs e) {
@@ -76,10 +79,7 @@ namespace NodePad {
 		}
 
 		private void cvsBackground_PointerPressed(object sender, PointerRoutedEventArgs e) {
-			if (clpBackground.Visibility == Windows.UI.Xaml.Visibility.Collapsed)
-				clpBackground.Visibility = Windows.UI.Xaml.Visibility.Visible;
-			else
-				clpBackground.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+			clpBackground.ChangeMode();
 		}
 
 		private void clpBackground_PointerMoved(object sender, PointerRoutedEventArgs e) {
@@ -124,6 +124,10 @@ namespace NodePad {
 				s += color.G + " ";
 				s += color.B + " ";
 				if (tgsWrap.IsOn)
+					s += 1 + " ";
+				else
+					s += 2 + " ";
+				if (tgsBlod.IsOn)
 					s += 1;
 				else
 					s += 2;
@@ -145,6 +149,16 @@ namespace NodePad {
 				return Windows.UI.Xaml.Visibility.Visible;
 			else
 				return Windows.UI.Xaml.Visibility.Collapsed;
+		}
+
+		private void tgsBlod_Toggled(object sender, RoutedEventArgs e) {
+			var tbx = ((Window.Current.Content as Frame).Content as ItemEditPage).FindName("tbxContent") as TextBox;
+			if (tgsBlod != null) {
+				if (tgsBlod.IsOn)
+					tbx.FontWeight = Windows.UI.Text.FontWeights.Bold;
+				else
+					tbx.FontWeight = Windows.UI.Text.FontWeights.Normal;
+			}
 		}
 	}
 }

@@ -23,7 +23,7 @@
 		<StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}" Width="250">
 
 			<!-- 第 1 部分标题-->
-			<TextBlock Style="{StaticResource SettingCharmTitleStyle}" Text="以下选项都会立刻保存"  />
+			<TextBlock Style="{StaticResource SettingCharmTitleStyle}" Text="以下选项自动保存"  />
 
 			<!-- 第 1 部分正文-->
 		</StackPanel>
@@ -34,13 +34,21 @@
 					<TextBlock Style="{StaticResource SettingCharmTextStyle}" Text="字号：" Width="90" />
 					<ComboBox x:Name="cbxFontSize" Width="145" IsDropDownOpen="True" SelectionChanged="cbxFontSize_SelectionChanged" />
 				</StackPanel>
-				<StackPanel Height="20" />
 
 				<StackPanel>
 					<TextBlock Text="自动换行：" Style="{StaticResource SettingCharmTextStyle}" />
 					<ToggleSwitch x:Name="tgsWrap" IsOn="True" Toggled="tgsWrap_Toggled" />
 				</StackPanel>
-				<StackPanel Height="10" />
+
+				<StackPanel>
+					<TextBlock Text="粗体：" Style="{StaticResource SettingCharmTextStyle}" />
+					<ToggleSwitch x:Name="tgsBlod" IsOn="False" Toggled="tgsBlod_Toggled" />
+				</StackPanel>
+
+				<StackPanel >
+					<TextBlock x:Name="tblHint" Text="Hello world!" Style="{StaticResource SettingCharmTextStyle}" />
+				</StackPanel>
+				<StackPanel Height="15" />
 
 				<StackPanel>
 					<StackPanel Orientation="Horizontal">
@@ -68,10 +76,6 @@
 
 				<StackPanel>
 					<local:ColorPicker x:Name="clpBackground" PointerPressed="clpBackground_PointerPressed" PointerMoved="clpBackground_PointerMoved" />
-				</StackPanel>
-				
-				<StackPanel >
-					<TextBlock x:Name="tblHint" Text="Hello world!" Style="{StaticResource SettingCharmTextStyle}" />
 				</StackPanel>
 			</StackPanel>
 		</ScrollViewer>

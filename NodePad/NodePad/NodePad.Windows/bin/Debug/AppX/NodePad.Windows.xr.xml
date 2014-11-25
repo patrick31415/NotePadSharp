@@ -3,8 +3,6 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="DefaultViewModel" />
     <RootPropertyPathName Name="Items" />
-    <RootPropertyPathName Name="Subtitle" />
-    <RootPropertyPathName Name="Title" />
     <RootPropertyPathName Name="NavigationHelper" />
     <RootPropertyPathName Name="GoBackCommand" />
   </Roots.PropertyPathNames>
@@ -19,15 +17,16 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
+      <RootProperty Name="LineHeight" />
       <RootProperty Name="Style" />
       <RootProperty Name="Text" />
       <RootProperty Name="Margin" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Inlines" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension">
@@ -75,10 +74,10 @@
       <RootProperty Name="Margin" />
       <RootMethod Name="GetColumnSpan" />
       <RootMethod Name="SetColumnSpan" />
-      <RootMethod Name="GetRow" />
-      <RootMethod Name="SetRow" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
       <RootProperty Name="Visibility" />
@@ -96,11 +95,20 @@
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
-      <RootProperty Name="Stroke" />
       <RootProperty Name="Fill" />
+      <RootProperty Name="Stroke" />
       <RootProperty Name="StrokeThickness" />
       <RootEvent Name="PointerPressed" />
       <RootEvent Name="PointerMoved" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Shapes.Path">
+      <RootProperty Name="Data" />
+      <RootProperty Name="Stroke" />
+      <RootProperty Name="StrokeThickness" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
+      <RootProperty Name="ImageSource" />
+      <RootProperty Name="Stretch" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Ellipse">
       <RootProperty Name="Height" />
@@ -125,13 +133,11 @@
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
       <RootProperty Name="BottomAppBar" />
-      <RootProperty Name="TopAppBar" />
       <RootEvent Name="SizeChanged" />
       <RootEvent Name="Loaded" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="RelativeSource" />
-      <RootProperty Name="Source" />
       <RootProperty Name="ElementName" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.RelativeSource" />
@@ -149,14 +155,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="Margin" />
@@ -176,9 +174,6 @@
       <RootProperty Name="IsReadOnly" />
       <RootProperty Name="Foreground" />
       <RootEvent Name="TextChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.DataTemplate">
-      <RootProperty Name="Template" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Margin" />
