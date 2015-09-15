@@ -1,1 +1,8 @@
-#include <iostream>\nusing namespace std;
+#
+include <iostream>
+
+using namespace std;
+
+int main(){
+	cout << "Hello, world!" << endl;
+}
